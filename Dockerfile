@@ -8,13 +8,13 @@ RUN apt-get update \
         libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
         libpng-dev libjpeg-dev python libx11-dev libxext-dev
 
-RUN export PHANTOM_JS="phantomjs-1.9.8-linux-x86_64" && \
-    DOWNLOAD_URL="https://bitbucket.org/ariya/phantomjs/downloads/${PHANTOM_JS}.tar.bz2" && \
-    echo $DOWNLOAD_URL && \
-    curl -L $DOWNLOAD_URL -vvv -O && \
-    tar xvjf $PHANTOM_JS.tar.bz2 && \
-    mv $PHANTOM_JS /usr/local/share && \
-    ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
+#RUN export PHANTOM_JS="phantomjs-1.9.8-linux-x86_64" && \
+#    DOWNLOAD_URL="https://bitbucket.org/ariya/phantomjs/downloads/${PHANTOM_JS}.tar.bz2" && \
+#    echo $DOWNLOAD_URL && \
+#    curl -L $DOWNLOAD_URL -vvv -O && \
+#    tar xvjf $PHANTOM_JS.tar.bz2 && \
+#    mv $PHANTOM_JS /usr/local/share && \
+#    ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
