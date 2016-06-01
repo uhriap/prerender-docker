@@ -23,7 +23,6 @@ server.use({
 	}
 });
 server.use(prerender.sendPrerenderHeader());
-server.use(prerender.blacklist());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
 
