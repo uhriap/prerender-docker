@@ -1,5 +1,13 @@
 // Set all blacklisted headers as lowercase
-var BLACKLISTED = ['user-agent','host'];
+var BLACKLISTED = [
+  'user-agent',       // Prerender sets her own user agent, which we dont want to override
+  'host',             // This is set to the host of prerender, so its wrong to forward
+  'accept',           // Let prerender accept everything and handle it
+  'accept-encoding',  // We dont want to forward deflate or gzip since prerender will break on those
+  'connection',       // No sudden keepalive stuff
+  'accept-charset',   // Prerender handles this
+  'content-length'    // Since we are rewriting lots of the request, we let prerender recalculate this
+];
 
 module.exports = {
   // Since prerender does not forward headers, this causes problems for some crawlers looking for
