@@ -4,7 +4,7 @@
   "description": "Dockerfile to build the prerender container image",
   "main": "server.js",
   "dependencies": {
-    "prerender": "^4.0.9"
+    "prerender": "^4.0.10"
   },
   "devDependencies": {},
   "scripts": {
