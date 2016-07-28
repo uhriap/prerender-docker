@@ -1,13 +1,13 @@
 var prerender = require('prerender');
 
 var forwardHeaders = require('./forwardHeaders');
-var clearPhantomCache = require('./clearPhantomCache');
 
 var server = prerender({
-  workers: process.env.PRERENDER_NUM_WORKERS || 4
+  workers: process.env.PRERENDER_NUM_WORKERS || 4,
+  iterations: process.env.PRERENDER_NUM_ITERATIONS || 25,
+  softIterations: process.env.PRERENDER_NUM_SOFT_ITERATIONS || 10
 });
 
-server.use(clearPhantomCache);
 server.use(forwardHeaders);
 server.use(prerender.sendPrerenderHeader());
 server.use(prerender.removeScriptTags());
