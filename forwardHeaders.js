@@ -18,14 +18,22 @@ module.exports = {
     // regular closure over it. Instead this function is stringified and sent to Phridge, where
     // it is executed.
     function executeInsidePhantom(headers, blacklisted, resolve) {
-      var customHeaders = this.customHeaders || {};
+      var page = this;
+      var customHeaders = page.customHeaders || {};
       for (var header in headers) {
         if (headers.hasOwnProperty(header) && blacklisted.indexOf(header) === -1) {
           customHeaders[header] = headers[header];
           // console.debug('Forwarding header ' + header);
         }
       }
-      this.customHeaders = customHeaders;
+      page.customHeaders = customHeaders;
+      //Custom headers should only be set by the initial request, so after initialization
+      //we need to reset the custom headers.
+      //see: http://phantomjs.org/api/webpage/property/custom-headers.html
+      page.onInitialized = function() {
+        page.customHeaders = {};
+      }
+
       resolve();
     }
 
