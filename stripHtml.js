@@ -14,11 +14,7 @@ module.exports = {
       return next();
     }
 
-    var sizeBefore = req.prerender.documentHTML.toString().length;
     req.prerender.documentHTML = minify(req.prerender.documentHTML.toString(), options);
-    var sizeAfter = req.prerender.documentHTML.toString().length;
-
-    console.log("Size was reduced by " + Math.round((100*(sizeBefore-sizeAfter)*100/sizeBefore))/100 +"%");
 
     next();
   }
