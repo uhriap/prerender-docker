@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:6
 MAINTAINER Magnet.me
 
 EXPOSE 3000
