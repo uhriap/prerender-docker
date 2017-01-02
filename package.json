@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "html-minifier": "^3.2.3",
-    "prerender": "4.3.1"
+    "prerender": "4.4.1"
   },
   "devDependencies": {},
   "scripts": {
