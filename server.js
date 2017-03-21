@@ -2,6 +2,7 @@ const prerender = require('prerender');
 
 const forwardHeaders = require('./forwardHeaders');
 const stripHtml = require('./stripHtml');
+const healthcheck = require('./healthcheck');
 
 const options = {
 	workers : process.env.PRERENDER_NUM_WORKERS || 4,
@@ -14,6 +15,7 @@ console.log('Starting with options:', options);
 
 const server = prerender(options);
 
+server.use(healthcheck('_health'));
 server.use(forwardHeaders);
 server.use(prerender.sendPrerenderHeader());
 server.use(prerender.removeScriptTags());
