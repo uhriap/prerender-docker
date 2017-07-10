@@ -20,6 +20,9 @@ server.use(forwardHeaders);
 server.use(prerender.sendPrerenderHeader());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
+if (process.env.DEBUG_PAGES) {
+	server.use(prerender.logger());
+}
 server.use(stripHtml);
 
 server.start();
