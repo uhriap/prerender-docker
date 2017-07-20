@@ -18,10 +18,14 @@ module.exports = {
 		}
 
 		const sizeBefore = req.prerender.documentHTML.toString().length;
-		req.prerender.documentHTML = minify(req.prerender.documentHTML.toString(), options);
+		try {
+			req.prerender.documentHTML = minify(req.prerender.documentHTML.toString(), options);
+		} catch (e) {
+			console.error("These was a problem parsing the HTML. The following was thrown. Please fix asap", e);
+		}
 		const sizeAfter = req.prerender.documentHTML.toString().length;
-
 		res.setHeader(COMPRESSION_HEADER, ((sizeBefore - sizeAfter) / sizeBefore).toFixed(4));
+
 		next();
 	}
 };
