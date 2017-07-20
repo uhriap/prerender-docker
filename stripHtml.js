@@ -21,7 +21,7 @@ module.exports = {
 		try {
 			req.prerender.documentHTML = minify(req.prerender.documentHTML.toString(), options);
 		} catch (e) {
-			console.error("These was a problem parsing the HTML. The following was thrown. Please fix asap", e);
+			console.error("These was a problem parsing the HTML. Please request the page manually and check what broke.");
 		}
 		const sizeAfter = req.prerender.documentHTML.toString().length;
 		res.setHeader(COMPRESSION_HEADER, ((sizeBefore - sizeAfter) / sizeBefore).toFixed(4));
