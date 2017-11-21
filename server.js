@@ -1,9 +1,10 @@
 const prerender = require('prerender');
 
-const forwardHeaders = require('./forwardHeaders');
-const stripHtml = require('./stripHtml');
-const healthcheck = require('./healthcheck');
-const removePrefetchTags = require('./removePrefetchTags');
+const forwardHeaders = require('./plugins/forwardHeaders');
+const stripHtml = require('./plugins/stripHtml');
+const healthcheck = require('./plugins/healthcheck');
+const removePrefetchTags = require('./plugins/removePrefetchTags');
+const log = require('./plugins/log');
 
 const options = {
 	pageDoneCheckInterval : 500,
@@ -15,6 +16,7 @@ console.log('Starting with options:', options);
 
 const server = prerender(options);
 
+server.use(log);
 server.use(healthcheck('_health'));
 server.use(forwardHeaders);
 server.use(prerender.blockResources());
