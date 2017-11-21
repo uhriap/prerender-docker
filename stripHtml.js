@@ -12,18 +12,18 @@ const options = {
 };
 
 module.exports = {
-	beforeSend(req, res, next) {
-		if (!req.prerender.documentHTML) {
+	pageLoaded(req, res, next) {
+		if (!req.prerender.content) {
 			return next();
 		}
 
-		const sizeBefore = req.prerender.documentHTML.toString().length;
+		const sizeBefore = req.prerender.content.toString().length;
 		try {
-			req.prerender.documentHTML = minify(req.prerender.documentHTML.toString(), options);
+			req.prerender.content = minify(req.prerender.content.toString(), options);
 		} catch (e) {
 			console.error("These was a problem parsing the HTML. Please request the page manually and check what broke.");
 		}
-		const sizeAfter = req.prerender.documentHTML.toString().length;
+		const sizeAfter = req.prerender.content.toString().length;
 		res.setHeader(COMPRESSION_HEADER, ((sizeBefore - sizeAfter) / sizeBefore).toFixed(4));
 
 		next();
