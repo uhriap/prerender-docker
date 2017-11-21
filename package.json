@@ -5,12 +5,14 @@
   "main": "server.js",
   "dependencies": {
     "html-minifier": "^3.2.3",
+    "pm2": "^2.7.2",
     "prerender": "5.0.2"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "prod": "pm2 start server.js --no-daemon --instances=2"
   },
   "license": "MIT"
 }

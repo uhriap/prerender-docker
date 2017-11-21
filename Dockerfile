@@ -3,6 +3,10 @@ MAINTAINER Magnet.me
 
 EXPOSE 3000
 
+# Install dumb-init to rape any Chrome zombies
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64.deb
+RUN dpkg -i dumb-init_*.deb
+
 # Install Chromium.
 RUN \
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
@@ -24,5 +28,5 @@ COPY package.json /usr/src/app/
 RUN yarn install
 COPY . /usr/src/app
 
-CMD [ "npm", "start" ]
+CMD [ "dumb-init", "yarn", "prod" ]
 
