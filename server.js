@@ -7,7 +7,7 @@ const removePrefetchTags = require('./removePrefetchTags');
 
 const options = {
 	pageDoneCheckInterval : 500,
-	pageLoadTimeout: 10000,
+	pageLoadTimeout: 20000,
 	waitAfterLastRequest: 250,
 	chromeFlags: [ '--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars' ],
 };
