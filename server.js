@@ -6,7 +6,9 @@ const healthcheck = require('./healthcheck');
 const removePrefetchTags = require('./removePrefetchTags');
 
 const options = {
-	jsCheckTimeout : 600,
+	pageDoneCheckInterval : 500,
+	pageLoadTimeout: 10000,
+	waitAfterLastRequest: 250,
 	chromeFlags: [ '--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars' ],
 };
 console.log('Starting with options:', options);
