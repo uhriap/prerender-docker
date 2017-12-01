@@ -4,9 +4,9 @@
   "description": "Dockerfile to build the prerender container image",
   "main": "server.js",
   "dependencies": {
-    "html-minifier": "^3.2.3",
-    "pm2": "^2.7.2",
-    "prerender": "5.0.2"
+    "html-minifier": "^3.2.7",
+    "pm2": "^2.8.0",
+    "prerender": "5.0.3"
   },
   "devDependencies": {},
   "scripts": {
