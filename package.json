@@ -1,6 +1,6 @@
 {
   "name": "@magnet.me/docker-prerender",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Dockerfile to build the prerender container image",
   "main": "server.js",
   "dependencies": {
