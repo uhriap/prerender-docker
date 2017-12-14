@@ -15,6 +15,7 @@ RUN \
   apt-get install -y google-chrome-stable && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
+RUN google-chrome-stable --no-sandbox --version > /opt/chromeVersion
 
 RUN mkdir -p /usr/src/app
 RUN groupadd -r prerender && useradd -r -g prerender -d /usr/src/app prerender
