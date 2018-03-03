@@ -17,8 +17,8 @@ module.exports = {
 		const customHeaders = Object.entries(req.headers).map(header => {
 			const headerKey = header[0];
 			const newHeader = {};
-			// If blocked, set a null value. Chrome will not forward these
-			newHeader[headerKey] = BLACKLISTED.includes(headerKey) ? null : header[1];
+			// If blocked, set a empty value
+			newHeader[headerKey] = BLACKLISTED.includes(headerKey) ? '' : header[1];
 			return newHeader;
 		})
 			.reduce((a, b) => Object.assign(a, b), {});
